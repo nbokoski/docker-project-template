@@ -1,0 +1,13 @@
+{
+	"name": "TestApp",
+	"profile": "development",
+	"cfconfigFile": "/app/conf/cfconfig.json",
+	"app": {
+		"cfengine": "adobe@2018"
+	},
+	"web": {
+		"blockCFAdmin": false,
+		"blockSensitivePaths": true,
+		"blockFlashRemoting": true
+	}
+}
