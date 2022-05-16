@@ -1,5 +1,5 @@
 component {
-  function onMissingMethod( string missingMethodName, struct missingMethodArguments ) {
-    return this;
-  }
+	function onMissingMethod( string missingMethodName, struct missingMethodArguments ) {
+		return this;
+	}
 }

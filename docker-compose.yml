@@ -1,50 +1,50 @@
 version: '3.5'
 
 services:
-  # https://hub.docker.com/r/adobecoldfusion/coldfusion2021
-  adobe-fw1:
-    image: adobecoldfusion/coldfusion2021:latest
-    container_name: adobe-fw1
-    environment:
-      - acceptEULA=YES
-      - password=guess
-    volumes:
-      - ./app/coldfusion/fw1:/app
-    ports:
-      - 8500:8500
-    restart: unless-stopped
+	# https://hub.docker.com/r/adobecoldfusion/coldfusion2021
+	adobe-fw1:
+		image: adobecoldfusion/coldfusion2021:latest
+		container_name: adobe-fw1
+		environment:
+			- acceptEULA=YES
+			- password=guess
+		volumes:
+			- ./app/coldfusion/fw1:/app
+		ports:
+			- 8500:8500
+		restart: unless-stopped
 
-  cb-fw1:
-    # https://hub.docker.com/r/ortussolutions/commandbox/
-    container_name: cb-fw1
-    build:
-      context: ./app/coldfusion/fw1
-    environment:
-      APP_DIR: '/app'
-      BOX_INSTALL: 'true'
-      HEALTHCHECK_URI: '/healthcheck.cfm'
-    depends_on:
-      - mailhog
-    networks:
-      local:
-    ports:
-      - 8501:8080
-    expose:
-      - 8080
-    volumes:
-      - ./app/coldfusion/fw1:/app
-      - ./fw1/:/framework
+	cb-fw1:
+		# https://hub.docker.com/r/ortussolutions/commandbox/
+		container_name: cb-fw1
+		build:
+			context: ./app/coldfusion/fw1
+		environment:
+			APP_DIR: '/app'
+			BOX_INSTALL: 'true'
+			HEALTHCHECK_URI: '/healthcheck.cfm'
+		depends_on:
+			- mailhog
+		networks:
+			local:
+		ports:
+			- 8501:8080
+		expose:
+			- 8080
+		volumes:
+			- ./app/coldfusion/fw1:/app
+			- ./fw1/:/framework
 
-  mailhog:
-    #https://hub.docker.com/r/mailhog/mailhog/
-    container_name: mailhog
-    image: mailhog/mailhog:latest
-    networks:
-      local:
-    ports:
-      - 1025:1025
-      - 8025:8025
+	mailhog:
+		#https://hub.docker.com/r/mailhog/mailhog/
+		container_name: mailhog
+		image: mailhog/mailhog:latest
+		networks:
+			local:
+		ports:
+			- 1025:1025
+			- 8025:8025
 
 networks:
-  local:
-    driver: bridge 
+	local:
+		driver: bridge 

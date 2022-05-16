@@ -1,6 +1,6 @@
 component extends="framework.ioc" {
-    variables._fw1_version  = "4.2.0";
-    variables._aop1_version = variables._fw1_version;
+	variables._fw1_version  = "4.2.0";
+	variables._aop1_version = variables._fw1_version;
 /*
 	Copyright (c) 2013-2018, Mark Drew, Sean Corfield, Daniel Budde
 
