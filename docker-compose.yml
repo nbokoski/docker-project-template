@@ -1,6 +1,7 @@
 version: '3.5'
 
 services:
+  # https://hub.docker.com/r/adobecoldfusion/coldfusion2021
   adobe-fw1:
     image: adobecoldfusion/coldfusion2021:latest
     container_name: adobe-fw1
@@ -14,8 +15,10 @@ services:
     restart: unless-stopped
 
   cb-fw1:
+    # https://hub.docker.com/r/ortussolutions/commandbox/
     container_name: cb-fw1
-    image: ortussolutions/commandbox
+    build:
+      context: ./app/coldfusion/fw1
     environment:
       APP_DIR: '/app'
       BOX_INSTALL: 'true'
@@ -30,15 +33,17 @@ services:
       - 8080
     volumes:
       - ./app/coldfusion/fw1:/app
+      - ./fw1/:/framework
 
   mailhog:
-      container_name: mailhog
-      image: mailhog/mailhog:latest
-      networks:
-        local:
-      ports:
-        - 1025:1025
-        - 8025:8025
+    #https://hub.docker.com/r/mailhog/mailhog/
+    container_name: mailhog
+    image: mailhog/mailhog:latest
+    networks:
+      local:
+    ports:
+      - 1025:1025
+      - 8025:8025
 
 networks:
   local:
