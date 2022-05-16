@@ -24,7 +24,7 @@
     "debuggingShowVariableSession":true,
     "debuggingShowVariableURL":true,
     "debuggingTemplate":"/WEB-INF/debug/classic.cfm",
-    "generalErrorTemplate":"/error.cfm",
+    "generalErrorTemplate":"/errorSiteWide.cfm",
     "inspectTemplate":"always",
     "lineDebuggerEnabled":false,
     "lineDebuggerMaxSessions":5,
